@@ -17,8 +17,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Application class
- *
- * @author Andrey Radionov
  */
 
 public class App extends Application {

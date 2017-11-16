@@ -2,8 +2,6 @@ package com.radionov.nyreaderspidertest.app;
 
 /**
  * Class for storing app preferences such as data URL
- *
- * @author Andrey Radionov
  */
 
 public class AppPreferences {
