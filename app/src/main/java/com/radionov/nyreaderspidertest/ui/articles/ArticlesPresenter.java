@@ -1,8 +1,8 @@
 package com.radionov.nyreaderspidertest.ui.articles;
 
+import com.radionov.nyreaderspidertest.app.App;
 import com.radionov.nyreaderspidertest.model.dto.ArticleDto;
 import com.radionov.nyreaderspidertest.model.network.ArticleStore;
-import com.radionov.nyreaderspidertest.model.network.ArticleStoreImpl;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class ArticlesPresenter {
     private ArticlesView articlesView;
 
     public ArticlesPresenter(ArticlesView articlesView) {
-        this.articleStore = new ArticleStoreImpl();
+        this.articleStore = App.getArticleStore();
         this.articlesView = articlesView;
     }
 
