@@ -23,7 +23,7 @@ public class ArticleStoreImpl implements ArticleStore {
     }
 
     @Override
-    public Observable<List<ArticleDto>> getUsers() {
+    public Observable<List<ArticleDto>> getArticles() {
         return articleApi.getUsers(AppPreferences.API_KEY)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -1,4 +1,4 @@
-package com.radionov.nyreaderspidertest.ui;
+package com.radionov.nyreaderspidertest.ui.articles;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.radionov.nyreaderspidertest.R;
 import com.radionov.nyreaderspidertest.model.dto.ArticleDto;
 import com.radionov.nyreaderspidertest.utilities.ImageHelper;
-import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

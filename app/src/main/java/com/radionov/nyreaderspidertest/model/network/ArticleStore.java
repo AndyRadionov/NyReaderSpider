@@ -14,5 +14,5 @@ public interface ArticleStore {
     /**
      * Get Articles from REST api
      */
-    Observable<List<ArticleDto>> getUsers();
+    Observable<List<ArticleDto>> getArticles();
 }
