@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NyReaderSpiderTest</string>
+    <string name="article_image_desc">Article image</string>
 </resources>
