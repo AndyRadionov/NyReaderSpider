@@ -22,7 +22,7 @@ import java.util.Locale;
 
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder> {
     private static final DateFormat dateFormat =
-            new SimpleDateFormat("dd-MM-YYY", Locale.ROOT);
+            new SimpleDateFormat("d-MMM-y", Locale.ROOT);
     private List<ArticleDto> articles;
 
     public ArticleAdapter(List<ArticleDto> articles) {

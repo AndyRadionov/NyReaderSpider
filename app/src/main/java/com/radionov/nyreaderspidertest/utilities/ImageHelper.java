@@ -22,6 +22,18 @@ public class ImageHelper {
         Picasso.with(context)
                 .load(imageUrl)
                 .networkPolicy(NetworkPolicy.OFFLINE)
-                .into(imageView);
+                .into(imageView, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                    }
+
+                    @Override
+                    public void onError() {
+                        //Try again online if cache failed
+                        Picasso.with(context)
+                                .load(imageUrl)
+                                .into(imageView);
+                    }
+                });
     }
 }
