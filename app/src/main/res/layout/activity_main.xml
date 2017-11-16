@@ -7,12 +7,12 @@
     android:padding="16dp"
     tools:context="com.radionov.nyreaderspidertest.ui.MainActivity">
 
-    <TextView
+    <ImageView
+        android:id="@+id/ny_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_weight="0"
-        android:textAlignment="center"
-        android:text="NY TIMES NEWS"/>
+        android:contentDescription="@string/ny_times" />
 
     <FrameLayout
         android:id="@+id/active_fragment"
