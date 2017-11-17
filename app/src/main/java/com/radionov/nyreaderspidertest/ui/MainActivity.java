@@ -31,10 +31,4 @@ public class MainActivity extends AppCompatActivity {
                 .load(R.raw.the_new_york_times_logo)
                 .into(nyTitle);
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
 }

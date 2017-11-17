@@ -4,10 +4,12 @@ package com.radionov.nyreaderspidertest.ui.articles;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -44,6 +46,7 @@ public class ArticlesFragment extends Fragment implements ArticlesView {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         articlesPresenter = new ArticlesPresenter(this);
 
         loadArticles();
@@ -64,8 +67,8 @@ public class ArticlesFragment extends Fragment implements ArticlesView {
 
         int orientation = getResources().getConfiguration().orientation;
         int spanCount = orientation == PORTRAIT_ORIENTATION ? PORTRAIT_COLUMNS : LANDSCAPE_COLUMNS;
-        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(),
-                spanCount, GridLayoutManager.VERTICAL, false);
+        StaggeredGridLayoutManager layoutManager =
+                new StaggeredGridLayoutManager(spanCount, PORTRAIT_ORIENTATION);
         recyclerView.setLayoutManager(layoutManager);
     }
 
@@ -81,5 +84,19 @@ public class ArticlesFragment extends Fragment implements ArticlesView {
         } else {
             Toast.makeText(getActivity(), "No Internet connection!", Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.main, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_refresh) {
+            articlesPresenter.loadArticles();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

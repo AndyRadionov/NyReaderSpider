@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_weight="0"
-        android:contentDescription="@string/ny_times" />
+        android:contentDescription="@string/ny_times"
+        android:paddingBottom="8dp"/>
 
     <FrameLayout
         android:id="@+id/active_fragment"
