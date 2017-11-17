@@ -1,6 +1,8 @@
 package com.radionov.nyreaderspidertest.ui.articles;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -28,7 +30,8 @@ import butterknife.Unbinder;
 /**
  * A simple {@link Fragment} subclass for showing list of ny times articles
  */
-public class ArticlesFragment extends Fragment implements ArticlesView {
+public class ArticlesFragment extends Fragment implements ArticlesView,
+        ArticleAdapter.OnItemClickListener {
     private static final int PORTRAIT_ORIENTATION = 1;
     private static final int PORTRAIT_COLUMNS = 2;
     private static final int LANDSCAPE_COLUMNS = 3;
@@ -62,7 +65,7 @@ public class ArticlesFragment extends Fragment implements ArticlesView {
 
     @Override
     public void viewArticles(List<ArticleDto> articles) {
-        ArticleAdapter articleAdapter = new ArticleAdapter(articles);
+        ArticleAdapter articleAdapter = new ArticleAdapter(articles, this);
         recyclerView.setAdapter(articleAdapter);
 
         int orientation = getResources().getConfiguration().orientation;
@@ -98,5 +101,11 @@ public class ArticlesFragment extends Fragment implements ArticlesView {
             articlesPresenter.loadArticles();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemClick(String articleUrl) {
+        Intent intent= new Intent(Intent.ACTION_VIEW, Uri.parse(articleUrl));
+        startActivity(intent);
     }
 }

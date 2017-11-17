@@ -3,6 +3,7 @@ package com.radionov.nyreaderspidertest.ui.articles;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,10 +24,16 @@ import java.util.Locale;
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder> {
     private static final DateFormat dateFormat =
             new SimpleDateFormat("d-MMM-y", Locale.ROOT);
-    private List<ArticleDto> articles;
+    private final List<ArticleDto> articles;
+    private final OnItemClickListener clickListener;
 
-    public ArticleAdapter(List<ArticleDto> articles) {
+    public interface OnItemClickListener {
+        void onItemClick(String articleUrl);
+    }
+
+    public ArticleAdapter(List<ArticleDto> articles, OnItemClickListener listener) {
         this.articles = articles;
+        this.clickListener = listener;
     }
 
     @Override
@@ -46,12 +53,13 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         return articles.size();
     }
 
-    class ArticleViewHolder extends RecyclerView.ViewHolder {
+    public class ArticleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         CardView cardView;
 
         ArticleViewHolder(CardView itemView) {
             super(itemView);
             cardView = itemView;
+            itemView.setOnClickListener(this);
         }
 
         void bind(int position) {
@@ -69,6 +77,13 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
 
             ImageView imageView = cardView.findViewById(R.id.article_image);
             ImageHelper.loadImage(cardView.getContext(), article.getThumbnail(), imageView);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int adapterPosition = getAdapterPosition();
+            String articleUrl = articles.get(adapterPosition).getUrl();
+            clickListener.onItemClick(articleUrl);
         }
     }
 }
