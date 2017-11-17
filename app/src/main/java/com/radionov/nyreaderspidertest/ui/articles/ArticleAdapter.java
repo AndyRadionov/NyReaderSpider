@@ -1,5 +1,6 @@
 package com.radionov.nyreaderspidertest.ui.articles;
 
+import android.graphics.Paint;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -65,7 +66,9 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         void bind(int position) {
             ArticleDto article = articles.get(position);
 
-            ((TextView) cardView.findViewById(R.id.article_section)).setText(article.getSection());
+            TextView section = cardView.findViewById(R.id.article_section);
+            section.setPaintFlags(section.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+            section.setText(article.getSection());
             ((TextView) cardView.findViewById(R.id.article_title)).setText(article.getTitle());
             ((TextView) cardView.findViewById(R.id.article_byline)).setText(article.getByline());
             ((TextView) cardView.findViewById(R.id.article_byline)).setText(article.getByline());

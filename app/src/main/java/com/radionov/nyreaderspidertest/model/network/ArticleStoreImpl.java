@@ -1,5 +1,7 @@
 package com.radionov.nyreaderspidertest.model.network;
 
+import android.util.Log;
+
 import com.radionov.nyreaderspidertest.app.App;
 import com.radionov.nyreaderspidertest.app.AppPreferences;
 import com.radionov.nyreaderspidertest.model.dto.ArticleDto;
@@ -24,6 +26,7 @@ public class ArticleStoreImpl implements ArticleStore {
 
     @Override
     public Observable<List<ArticleDto>> getArticles() {
+        Log.d("ArticleStore", "getArticles");
         return articleApi.getUsers(AppPreferences.API_KEY)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
