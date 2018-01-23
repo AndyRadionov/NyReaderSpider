@@ -78,8 +78,10 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
             ((TextView) cardView.findViewById(R.id.article_published_date))
                     .setText(dateFormat.format(article.getPublishedDate()));
 
-            ImageView imageView = cardView.findViewById(R.id.article_image);
-            ImageHelper.loadImage(cardView.getContext(), article.getThumbnail(), imageView);
+            if (article.getThumbnail() != null && !article.getThumbnail().isEmpty()) {
+                ImageView imageView = cardView.findViewById(R.id.article_image);
+                ImageHelper.loadImage(cardView.getContext(), article.getThumbnail(), imageView);
+            }
         }
 
         @Override
