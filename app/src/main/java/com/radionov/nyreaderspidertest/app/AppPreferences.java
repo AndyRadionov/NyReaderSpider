@@ -6,7 +6,7 @@ package com.radionov.nyreaderspidertest.app;
 
 public class AppPreferences {
     public static final String ARTICLES_BASE_URL = "https://api.nytimes.com/svc/news/v3/content/all/";
-    public static final String API_KEY = "61923f85497e45c48b2e3e8d9c0c3998";
+    public static final String API_KEY = "Put_your_api_key_here";
 
     private AppPreferences() {
     }
